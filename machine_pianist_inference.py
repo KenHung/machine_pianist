@@ -106,7 +106,7 @@ if __name__ == "__main__":
     midi_files = [
         # "../kotakee_companion/speech_server/piano_player/now_playing/channel.mid",
         # "../kotakee_companion/speech_server/piano_player/now_playing/midna.mid",
-        "/Users/ken/Downloads/c2067.mid",
+        "/Users/ken/Documents/Hymnary/christianstudy_midi/output/hymnary002.mid",
         # "./midi_test/model6 website.mid"
         # "./midi_test/toss a coin to your witcher.mid",
         # "./midi_test/bang.mid",
@@ -119,8 +119,8 @@ if __name__ == "__main__":
 
     model = "model6"
     model_path = Path("./production_models/%s/machine_pianist.h5" % model)
-    scaler_X_path = Path("./saved_models/%s_scaler_X.bin" % model)
-    scaler_Y_path = Path("./saved_models/%s_scaler_Y.bin" % model)
+    scaler_X_path = Path(f"./production_models/{model}/{model}_scaler_X.bin")
+    scaler_Y_path = Path(f"./production_models/{model}/{model}_scaler_Y.bin")
 
     from utils.midi_player import *
 

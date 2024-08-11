@@ -1,13 +1,13 @@
 mido==1.2.10
-pygame==2.1.2 # Debug tool. 
+pygame # Debug tool. 
 
-numpy==1.19.5
-pandas==1.1.5
+numpy<2
+pandas<2
 
-tensorflow==2.6.0
-keras==2.6.0
+tensorflow==2.13.1
+keras==2.13.1
 
 dill==0.3.4
-scikit-learn==1.0
+scikit-learn==1.0.2
 tqdm==4.62.3
 ffmpeg==1.4
