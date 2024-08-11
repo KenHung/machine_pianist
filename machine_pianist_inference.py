@@ -93,29 +93,17 @@ class MachinePianist:
 #
 # Usage (Graph only):
 # python machine_pianist_inference -g -p
-#
-# Usage (Play):
-# python machine_pianist_inference
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-g", default=False, action="store_true")
-    parser.add_argument("-p", default=True, action="store_false")
+    parser.add_argument("-p", default=False, action="store_true")
     parser.add_argument("-d", default=False, action="store_true")
+    parser.add_argument("-s", default=True, action="store_true")
+    parser.add_argument("infile", action="store")
+    parser.add_argument("outfile", action="store")
     args = parser.parse_args()
 
-    midi_files = [
-        # "../kotakee_companion/speech_server/piano_player/now_playing/channel.mid",
-        # "../kotakee_companion/speech_server/piano_player/now_playing/midna.mid",
-        "/Users/ken/Documents/Hymnary/christianstudy_midi/output/hymnary002.mid",
-        # "./midi_test/model6 website.mid"
-        # "./midi_test/toss a coin to your witcher.mid",
-        # "./midi_test/bang.mid",
-        # "./midi_test/model1_castle.mid",
-        # "./midi_test/seven nation army.mid",
-        # "./midi_test/Undertale_-_Spider_Dance_-_Lattice.mid",
-        # "./midi_test/MIDI-Unprocessed_043_PIANO043_MID--AUDIO-split_07-06-17_Piano-e_1-03_wav--1.midi",
-        # "./midi_test/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi"
-    ]
+    midi_files = [args.infile]
 
     model = "model6"
     model_path = Path("./production_models/%s/machine_pianist.h5" % model)
@@ -152,3 +140,5 @@ if __name__ == "__main__":
             print_first_x(midi, 500, notes_only=False)
         if args.p is True:
             player.play_mido(midi, block=True, verbose=True)
+        if args.s is True:
+            midi.save(args.outfile)
